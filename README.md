@@ -11,12 +11,12 @@ This project is a MediaPlayer app can just run on windows os because it use some
 
 Describing the code:
 
-`
+```
 private string filepath;
-`
+```
 This variable save the file path.
 
-`
+```
 using (OpenFileDialog filedialog = new OpenFileDialog())
 {
     if (filedialog.ShowDialog() == DialogResult.OK)
@@ -25,6 +25,6 @@ using (OpenFileDialog filedialog = new OpenFileDialog())
         axWindowsMediaPlayer1.URL = filepath;
     }
 }
-`
+```
 Then we create the `OpenFileDialog` to chose the file to open it, then check that it has correct value after selection.
 Finally we send it to the player object to play it.
