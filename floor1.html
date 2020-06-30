@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./node_modules/chart.js/dist/Chart.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 60px;
+              height: 34px;
+            }
+            
+            .switch input { 
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+            
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: rgb(212, 19, 19);
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+            
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 26px;
+              width: 26px;
+              left: 4px;
+              bottom: 4px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+            
+            input:checked + .slider {
+              background-color: #0bb928;
+            }
+            
+            input:focus + .slider {
+              box-shadow: 0 0 1px #0bb928;
+            }
+            
+            input:checked + .slider:before {
+              -webkit-transform: translateX(26px);
+              -ms-transform: translateX(26px);
+              transform: translateX(26px);
+            }
+            
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 34px;
+            }
+            
+            .slider.round:before {
+              border-radius: 50%;
+            }
+
+            img[usemap] {
+                width: 100%; 
+                height: auto;
+                display:block;
+                margin:auto;
+            }
+        </style>    
+    </head>
+    <body style="background-color: #f1f1f1;">
+        <img onclick="showCoords(event)" src="./Map-L-Final-floor1-Big.jpg" alt="Workplace" usemap="#workmap">
+
+        <map name="workmap">
+            <!-- Hpack01 : Top-Left -->
+            <area shape="rect" title="Details" id="Hpack01"
+                coords="655,180,740,270" alt="Hpack01" type="button"
+                data-toggle="modal" data-target="#exampleModal">
+            <!-- Hpack02 : Center-Left -->
+            <area shape="rect" title="Details"  id="Hpack02"
+                coords="655,365,740,460" alt="Hpack02" type="button" 
+                data-toggle="modal" data-target="#exampleModal">
+            <!-- Hpack03 : Down-Left -->
+            <area shape="rect" title="Details"  id="Hpack03"
+                coords="655,620,740,710" alt="Hpack03" type="button" 
+                data-toggle="modal" data-target="#exampleModal">
+            <!-- Hpack04 : Top-Center -->
+            <area shape="rect" title="Details"  id="Hpack04"
+                coords="880,220,960,290" alt="Hpack04" type="button" 
+                data-toggle="modal" data-target="#exampleModal">
+            <!-- Hpack05 : Top-Right -->
+            <area shape="rect" title="Details"  id="Hpack05"
+                coords="1080,130,1170,215" alt="Hpack05" type="button" 
+                data-toggle="modal" data-target="#exampleModal">
+        </map>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="float: right;" >
+                <h5 class="modal-title" id="exampleModalLabel">کنترل فن کوئل شماره</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-inline form-group mb-2" style="float: right;">                            
+                            <label class="switch">                            
+                                <input type="checkbox" name="powerControl" >
+                                <span class="slider round"></span>
+                            </label>
+                            <label for="powerControl" style="margin: 0 10px;">روشن/خاموش</label>
+                        </div>
+                        <div class="form-inline form-group mb-2">                            
+                            <input class="form-control" type="number" name="temperatureSelector" style="width: 80px;" value="25" min="16" max="32">
+                            <label for="temperatureSelector" style="margin: 0 10px;">دمای محیط</label>
+                        </div>
+                        <div class="form-group">
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="width: 80px;" data-dismiss="modal">لغو</button>
+                    <button type="button" class="btn btn-primary" style="width: 120px;">اعمال تغییرات</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script src="./jQuery.min.js"></script>
+        <script src="./jquery.rwdImageMaps.min.js" ></script>        
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./node_modules/chart.js/dist/Chart.min.js"></script>
+        <script>
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [0,10,20,30,40,50], //time
+                    datasets: [{
+                        label: 'دما',
+                        data: [12, 19, 3, 5, 2, 3], //temp
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script> 
+        <script>
+            $(document).ready(function(e) {
+                $('img[usemap]').rwdImageMaps();
+            })
+        </script>
+    </body>
+</html>
+
+
