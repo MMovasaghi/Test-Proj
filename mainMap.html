@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Main Map</title>
+        <style>
+            img[usemap] {
+                width: 100%; 
+                height: auto;
+                display:block;
+                margin:auto;
+            }
+        </style>
+    </head>
+    <body>        
+        <div style="background-color: #f1f1f1;">
+            <img onclick="showCoords(event)" src="./mainMap.jpg" alt="Workplace" usemap="#workmap">
+
+            <map name="workmap">
+                <area shape="poly" onclick="floorClick('floor5 : N')" title="طبقه پنجم | واحد شمالی" id="floor5_n"
+                    coords="878,190,901,203,929,218,961,237,990,250,1012,263,1014,286,1014,309,1012,323,983,313,931,287,896,268,883,254,879,232,880,207"
+                     alt="طبقه پنجم | واحد شمالی" type="button">
+                <area shape="poly" onclick="floorClick('floor5 : S')" title="طبقه پنجم | واحد جنوبی" id="floor5_s"
+                    coords="1010,254,1037,243,1057,232,1087,217,1113,201,1155,183,1176,171,1196,159,1196,185,1197,212,1197,227,1189,236,1164,247,1140,258,1119,270,1094,285,1073,296,1050,307,1028,317,1011,326,1008,327,1005,296,1007,271"
+                    alt="طبقه پنجم | واحد جنوبی" type="button">
+                
+                <area shape="poly" onclick="floorClick('floor4 : N')"  title="طبقه چهارم | واحد شمالی" id="floor4_n"
+                    coords="876,253,901,268,945,294,986,317,1011,328,1019,337,1024,367,1022,391,1002,404,926,357,890,335,874,317,875,264"
+                     alt="طبقه چهارم | واحد شمالی" type="button">
+                <area shape="poly" onclick="floorClick('floor4 : S')" title="طبقه چهارم | واحد جنوبی" id="floor4_s"
+                    coords="1004,320,1034,309,1070,291,1108,269,1148,247,1178,229,1191,224,1197,251,1200,279,1199,305,1185,318,1158,324,1139,335,1114,346,1083,364,1041,388,1010,403,1003,366,1005,353"
+                    alt="طبقه چهارم | واحد جنوبی" type="button">
+
+                <area shape="poly" onclick="floorClick('floor3 : N')"  title="طبقه سوم | واحد شمالی" id="floor3_n"
+                    coords="867,320,914,343,974,376,1017,397,1027,442,1018,473,992,478,901,428,876,405,867,391,868,356,875,333"
+                    alt="طبقه سوم | واحد شمالی" type="button">
+                <area shape="poly" onclick="floorClick('floor3 : S')" title="طبقه سوم | واحد جنوبی" id="floor3_s"
+                    coords="1009,394,1046,379,1090,360,1138,329,1190,298,1203,294,1206,338,1203,363,1201,380,1177,388,1151,401,1132,412,1105,427,1079,445,1056,459,1024,474,1007,480,1007,433,1007,417"
+                    alt="طبقه سوم | واحد جنوبی" type="button">
+
+                <area shape="poly" onclick="floorClick('floor2 : N')"  title="طبقه دوم | واحد شمالی" id="floor2_n"
+                    coords="870,388,895,401,928,424,972,447,1003,463,1018,470,1025,490,1019,520,1017,541,993,540,957,518,911,502,889,481,870,460,872,431,875,408"
+                    alt="طبقه دوم | واحد شمالی" type="button">
+                <area shape="poly" onclick="floorClick('floor2 : S')" title="طبقه دوم | واحد جنوبی" id="floor2_s"
+                    coords="1003,527,1022,517,1043,503,1074,485,1092,476,1117,459,1140,446,1158,436,1178,424,1202,413,1204,440,1206,472,1205,493,1202,503,1172,518,1144,530,1122,541,1090,556,1067,570,1041,583,1017,592,1012,579,1010,560,1009,544"
+                    alt="طبقه دوم | واحد جنوبی" type="button">
+
+                <area shape="poly" onclick="floorClick('floor1 : N')"  title="طبقه اول | واحد شمالی" id="floor1_n"
+                    coords="870,460,899,476,936,496,978,517,1005,534,1026,547,1030,568,1028,586,1027,607,1027,626,1021,637,1004,640,955,621,934,612,914,600,893,588,874,576,854,561,847,532,854,503,863,482,869,461"
+                    alt="طبقه اول | واحد شمالی" type="button">
+                <area shape="poly" onclick="floorClick('floor1 : S')" title="طبقه اول | واحد جنوبی" id="floor1_s"
+                    coords="1006,600,1031,585,1064,565,1092,549,1119,533,1141,522,1152,514,1169,506,1192,493,1202,506,1199,534,1198,555,1198,567,1172,578,1144,591,1122,604,1098,617,1082,625,1067,632,1044,645,1020,658,1014,648,1011,630,1007,612"
+                    alt="طبقه اول | واحد جنوبی" type="button">
+
+                <area shape="poly" onclick="floorClick('GFsd')" title="طبقه همکف" id="gf"
+                    coords="1010,689,1033,678,1061,663,1094,647,1125,630,1151,614,1177,599,1191,594,1194,626,1195,652,1193,672,1162,695,1123,715,1088,728,1067,736,1042,736,1015,735,1013,713,1018,695"
+                    alt="طبقه همکف" type="button">
+            </map>
+        </div>
+        <script src="./jQuery.min.js"></script>
+        <script src="./jquery.rwdImageMaps.min.js" ></script>        
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(e) {
+                $('img[usemap]').rwdImageMaps();
+            })
+            var res = "";
+            function showCoords(e) {
+                var x = e.clientX + 100;
+                var y = e.clientY + 100;
+                res += x + "," + y + ",";
+                console.log(res);
+            }
+            function floorClick(t) {
+                console.log(t)
+            }
+
+        </script>
+    </body>
+</html>
+
+
