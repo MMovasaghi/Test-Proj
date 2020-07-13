@@ -9,9 +9,15 @@
         <title>Floor 1 - Left</title>
     </head>
     <body>        
-        <div style="background-color: #f1f1f1;">
+        <div style="background-color: #f1f1f1; position: relative;">
             <img onclick="showCoords(event)" src="./mapImg/Map-L-Final-floor1-Big.jpg" alt="Workplace" usemap="#workmap">
-
+            <div style="width: 20px;left: 80%;height: 20px;top: 20%;position: absolute;">
+                <label class="switch">
+                    <input type="checkbox" name="powerControl" >
+                    <span class="slider round"></span>
+                </label>
+                <label for="powerControl" style="margin-left: -5px; width: 200px; font-size: 20px;">روشن / خاموش</label>
+            </div>
             <map name="workmap">
                 <!-- hvac01 : Top-Left -->
                 <area shape="rect" title="Details" id="hvac01"
