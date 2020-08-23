@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Floor5 Lamp Right</title>
+        <link rel="stylesheet" href="Style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.maphilight.js"></script>
+    </head>
+    
+    <body>
+        <div class="position-div" >
+            <img class="map cndition-img" src="Map-R-Final-floor5-Big.png" usemap="#map">
+            <map name="map">
+                <area id="map1" shape="poly" coords="627,367,627,248,979,250,984,93,1098,93,1098,325,1372,332,1374,780,802,775,800,371" href="#" class="group" data-maphilight='{"strokeColor":"e4f908","strokeWidth":15,"fillColor":"ecf494","fillOpacity":0.6}'>
+                <area id="map2" shape="rect" coords="620,385,786,787" href="#" class="group" data-maphilight='{"strokeColor":"e4f908","strokeWidth":15,"fillColor":"ecf494","fillOpacity":0.6}'>
+            </map>
+        </div>
+
+        <!-- create line round map -->
+        <!-- <script>
+            var areas = document.getElementsByTagName( 'area' );
+            for( var index = 0; index < areas.length; index++ ) {    
+                areas[index].addEventListener( 'mouseover', function () {this.focus();}, false );
+                areas[index].addEventListener( 'mouseout', function () {this.blur();}, false );
+            };
+        </script> 
+        <script src="js/jquery.min.js"></script> -->
+
+        <script type="text/javascript" src="js/imageMapResizer.min.js"></script>
+        <script type="text/javascript">
+            $('map').imageMapResize();
+        </script>
+
+        <script>
+            $(function() {
+                $('.map').maphilight({
+                    fillColor: '008800'
+                });
+                // $('#hilightlink').mouseover(function(e) {
+                //     $('#square2').mouseover();
+                // }).mouseout(function(e) {
+                //     $('#square2').mouseout();
+                // }).click(function(e) { e.preventDefault(); });
+                $('#map1link').click(function(e) {
+                    e.preventDefault();
+                    var data = $('#map1').data('maphilight') || {};
+                    data.neverOn = !data.neverOn;
+                    $('#map1').data('maphilight', data);
+                });
+                $('#map1,#map1link2').click(function(e) {
+                    e.preventDefault();
+                    var data = $('#map1').mouseout().data('maphilight') || {};
+                    data.alwaysOn = !data.alwaysOn;
+                    $('#map1').data('maphilight', data).trigger('alwaysOn.maphilight');
+                });
+            });
+            </script>
+
+            <script>
+                $(function() {
+                    $('.map').maphilight({
+                        fillColor: '008800'
+                    });
+                    // $('#hilightlink').mouseover(function(e) {
+                    //     $('#square2').mouseover();
+                    // }).mouseout(function(e) {
+                    //     $('#square2').mouseout();
+                    // }).click(function(e) { e.preventDefault(); });
+                    $('#map2link').click(function(e) {
+                        e.preventDefault();
+                        var data = $('#map2').data('maphilight') || {};
+                        data.neverOn = !data.neverOn;
+                        $('#map2').data('maphilight', data);
+                    });
+                    $('#map2,#map2link2').click(function(e) {
+                        e.preventDefault();
+                        var data = $('#map2').mouseout().data('maphilight') || {};
+                        data.alwaysOn = !data.alwaysOn;
+                        $('#map2').data('maphilight', data).trigger('alwaysOn.maphilight');
+                    });
+                });
+                </script>
+    </body>
+</html>
